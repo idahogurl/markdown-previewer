@@ -21553,7 +21553,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Roboto);", ""]);
 
 	// module
-	exports.push([module.id, "body {\n  font-family: Roboto, sans-serif; }\n\n#preview {\n  width: 650px; }\n\n.row {\n  display: table-row; }\n\n.col {\n  display: table-cell;\n  vertical-align: top; }\n\ntextarea {\n  margin-right: 20px; }\n", ""]);
+	exports.push([module.id, "body {\n  font-family: Roboto, sans-serif; }\n\n#preview {\n  width: 650px;\n  height: 650px;\n  border: 1px solid black; }\n\n.row {\n  display: table-row; }\n\n.col {\n  display: table-cell;\n  vertical-align: top; }\n\ntextarea {\n  margin-right: 20px; }\n", ""]);
 
 	// exports
 

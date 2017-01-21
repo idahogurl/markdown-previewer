@@ -28,7 +28,7 @@ class MarkdownPreviewer extends Component<any,any> {
             <h1>Markdown Previewer</h1>
             <div className="row">
                 <div className="col">
-                    <textarea id="markdown" cols={80} rows={50} onChange={this.updatePreview}/>
+                    <textarea id="markdown" cols={80} rows={50} onChange={this.updatePreview} />
                 </div>
             <div className="col">
                     Preview
