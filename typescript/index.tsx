@@ -10,16 +10,16 @@ import {Component} from "react";
 require('./sass/styles.scss');
 
 class MarkdownPreviewer extends Component<any,any> {
-    
+    markdown: string;
     constructor() {
         super();
+        debugger;
         this.updatePreview = this.updatePreview.bind(this);
+        this.state = {html: "", value:""}
     }
 
-    updatePreview() {
-        debugger;
-        let markdown:string = $("#markdown").val();
-        document.getElementById("preview").innerHTML = Marked(markdown);
+    updatePreview(e) {
+        this.setState({html: Marked(e.target.value)});
     }
     
     render() {
@@ -28,11 +28,12 @@ class MarkdownPreviewer extends Component<any,any> {
             <h1>Markdown Previewer</h1>
             <div className="row">
                 <div className="col">
-                    <textarea id="markdown" cols={80} rows={50} onChange={this.updatePreview} />
+                     <h3>Markdown</h3>
+                     <MarkdownInput value={this.state.value} changeHandler={this.updatePreview}/>
                 </div>
             <div className="col">
-                    Preview
-                    <div id="preview" className="col"></div>
+                <h3>Preview</h3>
+                <MarkdownPreview html={this.state.html} />
                 </div>
             </div>
             </div>
@@ -40,4 +41,22 @@ class MarkdownPreviewer extends Component<any,any> {
     }
 }
 
+class MarkdownInput extends Component<any, any> {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+    return (<textarea id="markdown" cols={80} rows={43} onChange={this.props.changeHandler}/>);
+    }
+
+}
+
+class MarkdownPreview extends Component<any, any>{
+    constructor() {
+        super();
+    }
+    render() {
+    return (<div id="preview" className="col" dangerouslySetInnerHTML={{__html: this.props.html}}></div>);
+    }
+}
 ReactDOM.render(<MarkdownPreviewer/>, document.getElementById("markdownPreviewer"));
